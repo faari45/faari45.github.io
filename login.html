@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body{
+            background-image:url(images/images/bgimage.jpg);
+        }
+        h1{text-align:center;
+        font-size:xx-large; 
+        color:rgb(193, 181, 72);
+        }
+
+     .login-box {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            background-color:rgb(212, 216, 178);
+            
+        }
+
+
+        h2{text-align: center;
+        text-decoration: underline;}
+
+       form{
+    
+         text-align: center;
+        }
+    </style>
+    <link href="signup.html">
+    <link href="privacypolicy.html">
+    <link href="terms&conditions.html">
+    <link href="index.html">
+    
+</head>
+<body>
+
+    <h1>WELCOME TO MY WEBSITE</h1>
+    
+   <div class="login-box">
+
+    <h2>Login Form</h2>
+
+    <form onsubmit="return validateLogin()">
+
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="Enter Username" required><br><br>
+
+        <label>E-mail ID:</label>
+        <input type="email" id="email" placeholder="Enter Email" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter Password" required><br><br>
+
+        <div class="checkbox">
+            <input type="checkbox" id="agree">
+            <label for="agree">
+                I agree to the Terms & Conditions and Privacy Policy.
+            </label><br><br>
+        </div>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <div class="signup">
+        Don't have an account?
+        <a href="signup.html">Sign Up</a>
+    </div>
+
+    <div class="links">
+        <a href="terms&conditions.html">Terms & Conditions</a>
+        |
+        <a href="privacypolicy.html">Privacy Policy</a>
+    </div>
+
+</div>
+
+<script>
+function validateLogin() {
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let agree = document.getElementById("agree");
+
+    // Get stored values
+    let storedUsername = localStorage.getItem("username");
+    let storedEmail = localStorage.getItem("email");
+    let storedPassword = localStorage.getItem("password");
+
+    if (username === "" || email === "" || password === "") {
+        alert("Please fill all the fields.");
+        return false;
+    }
+
+    if (!agree.checked) {
+        alert("Please accept the Terms & Conditions and Privacy Policy.");
+        return false;
+    }
+
+    if (
+        username === storedUsername &&
+        email === storedEmail &&
+        password === storedPassword
+    ) {
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid Username, Email or Password.");
+    }
+
+    return false;
+}
+</script>
+
+</body>
+</html> 
+     
