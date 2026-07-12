@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up Page</title>
+
+    <style>
+
+        body{
+            background-image: url(images/images/bgimage.jpg);
+        }
+        h1{ color: rgb(251, 197, 82);
+            text-align: center;
+            text-decoration-line: underline;
+            
+        }
+
+        
+        .signup-box{
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            background-color:rgba(221, 219, 228, 0.804);
+            
+        }
+
+        form{
+            text-align: center;
+        }
+    </style>
+    <link href="privacypolicy.html">
+    <link href="terms&conditions.html">
+
+</head>
+<body>
+
+    <h1>CREATE AN ACCOUNT</h1>
+    
+    
+    <div class="signup-box">
+        
+
+    <form onsubmit="return validateSignup()">
+
+        <label>Username*:</label>
+        <input type="text" id="username" placeholder="Enter your name" required><br><br>
+
+        <label>E-mail id*:</label>
+        <input type="email" id="email" placeholder="E-mail id" required><br><br>
+
+        <label>Country*:</label>
+        <select id="country">
+            <option>USA</option>
+            <option>UK</option>
+            <option selected>India</option>
+            <option>Pakistan</option>
+            <option>Sri Lanka</option>
+            <option>Other</option>
+        </select>
+        <br><br>
+
+        <label>Contact no:</label>
+        <input type="tel" id="contact" placeholder="Contact" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Password" required>
+        <br><br>
+
+        <input type="checkbox" id="agree">
+        <label for="agree">
+            I agree to the Terms & Conditions and Privacy Policy of this website.
+        </label>
+
+        <br><br>
+
+        <button type="submit">Sign Up</button>
+
+        <br><br>
+
+        <div class="terms-conditions">
+            <a href="terms&conditions.html">Terms & Conditions</a>
+        </div>
+
+        <div class="privacy-policy">
+            and
+            <a href="privacypolicy.html">Privacy Policy</a>
+        </div>
+
+    </form>
+
+
+    
+    <script>
+            
+function validateSignup() {
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let agree = document.getElementById("agree");
+
+    if (username === "" || email === "" || password === "") {
+        alert("Please fill all fields.");
+        return false;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    if (!agree.checked) {
+        alert("Please accept the Terms & Conditions and Privacy Policy.");
+        return false;
+    }
+
+    // Save data in Local Storage
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+
+    alert("Signup Successful!");
+
+    window.location.href = "login.html";
+
+    return false;
+}
+
+</script>
+</body>
+</html>
